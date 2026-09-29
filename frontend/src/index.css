@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0B1F4B;
+  --color-indigo: #3B4BA8;
+  --color-saffron: #F28C28;
+  --color-green-verified: #1E8E5A;
+  --color-amber-review: #D99A1C;
+  --color-red-critical: #C0392B;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F7FA;
+  --color-border: #E2E6EE;
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-devanagari: 'Noto Sans Devanagari', sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+  --radius: 8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-surface-alt);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Utility classes matching design tokens */
+.font-devanagari { font-family: var(--font-family-devanagari); }
+.font-mono-hash { font-family: var(--font-family-mono); }
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-alt); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #c0c8d8; }

@@ -1,0 +1,7 @@
+# Security Overview: MP ExamIntelligence
+
+1. **Identity Masking**: Candidate identities (names, roll numbers) are completely isolated in the `candidates` table and are accessible only to administrators. During the upload process, a random `candidate_token` is generated. The top 12% of the physical answer sheet is aggressively masked to strip header information before any image is shown to an examiner.
+2. **Authentication & Authorization**: The API is protected via stateless JWT access tokens signed with `HS256`. The application enforces Role-Based Access Control (RBAC), verifying role claims (`admin`, `examiner`, `moderator`, `auditor`) on protected endpoints.
+3. **Data Integrity (Tamper-Evidence)**: The `audit_events` table operates on a strictly append-only basis. A SHA-256 hash chain continuously links events for a given sheet. The application detects and rejects any mutation or deletion of history. Database-level triggers exist as a defense-in-depth measure against raw SQL updates.
+4. **Secrets Management**: No API keys (e.g., Gemini, Google Vision), database credentials, or secret signing keys are hardcoded in the repository. They are exclusively sourced from the environment (`.env` file in local development).
+5. **Rate Limiting & CORS**: Cross-Origin Resource Sharing (CORS) is strictly configured to only allow requests from the designated frontend application (`localhost:5173`). Authentication endpoints implement rate limiting to deter brute-force credential stuffing.

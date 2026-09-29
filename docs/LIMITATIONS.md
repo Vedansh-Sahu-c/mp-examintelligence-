@@ -1,0 +1,6 @@
+# Limitations: MP ExamIntelligence
+
+1. **OCR Accuracy**: The system heavily relies on OCR to extract text, line boundaries, and language tags. Poor handwriting, complex layouts, or degraded image quality can reduce bounding box precision, resulting in inaccurate evidence overlays in the UI.
+2. **LLM Variability**: Even with zero temperature, LLM outputs can vary slightly. The system measures agreement between two LLM runs, but evaluating open-ended subjective answers inherently carries variance. The system is designed as a recommendation engine, relying on human examiners to enforce final accuracy.
+3. **Audit Trail Scope**: The SHA-256 hash chaining guarantees the detection of tampering or retrospective modification of the evaluation events. It does *not* provide cryptographic non-repudiation (digital signatures) of the examiner's physical identity or guarantee the security of the underlying database credentials from an inside attack.
+4. **Synthetic Data**: The sample dataset provided with this prototype (including names, exam content, candidate tokens, and score deviations) is entirely synthetic. All "benchmarks" and performance numbers shown in the prototype demo are illustrative placeholders and not indicative of real-world MPOnline cohorts.
